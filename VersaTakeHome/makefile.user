@@ -1,0 +1,14 @@
+linkedList: main.o CircularList.o Wrapper.o
+	g++ -o linkedList main.o CircularList.o Wrapper.o
+
+Wrapper.o: Wrapper.cpp Wrapper.h CircularList.h
+		g++ -c -O3 -Wall -std=c++14 Wrapper.cpp
+
+CircularList.o: CircularList.h CircularList.cpp
+		gcc -c -O3 -Wall -std=c++14 CircularList.cpp
+
+main.o: main.c Wrapper.h
+		gcc -c -O3 -Wall main.c
+
+clean:
+		rm -f *.o linkedList
